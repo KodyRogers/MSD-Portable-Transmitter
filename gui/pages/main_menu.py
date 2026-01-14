@@ -41,8 +41,8 @@ class MainMenu(tk.Frame):
         tk.Button(content, text="System Reboot",
                 font=button_font,
                 width=button_width,
-                height=button_height,
-                command=lambda: app.show_frame("SystemReboot")).pack(pady=5)
+                height=button_height).pack(pady=5)
+                # TODO
 
         tk.Button(content, text="Control",
                 font=button_font,
