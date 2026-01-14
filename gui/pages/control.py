@@ -34,6 +34,7 @@ class Control(tk.Frame):
             print("Hardware STOP command issued")
             messagebox.showinfo("Control", "Hardware STOP command issued")
             # TODO: Add real hardware control logic here
+            
         def power_hardware():
             status_var.set("Power On")
             print("Hardware Turned on")
