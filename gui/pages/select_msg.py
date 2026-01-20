@@ -1,28 +1,7 @@
-import os
 import tkinter as tk
 from tkinter import font, messagebox
-from mutagen import File
-from datetime import datetime
 
-def load_files():
-        files = []
-
-        for file in os.listdir("files"):
-            if file.endswith(".mp3") or file.endswith(".wav"):
-                filepath = os.path.join("files", file)
-
-                audio = File(filepath)
-                stats = os.stat(filepath)
-                if audio is not None:
-                    files.append({
-                        "filename": file,
-                        "filepath": filepath,
-                        "duration": audio.info.length,
-                        "modified": datetime.fromtimestamp(stats.st_mtime)
-                    })
-                else:
-                    print(f"Unsupported file format: {file}")
-        return files
+from gui.pages.helper.load_files import load_files
 
 class SelectMsg(tk.Frame):
 
@@ -106,8 +85,11 @@ class SelectMsg(tk.Frame):
                 self.showwarning("Warning", "Please select at least one message.")
                 return
 
+            print("Loading messages in order:")
+            for msg in selected_order:
+                print(msg)
+            messagebox.showinfo("Load Messages", "Messages loaded successfully.")
             # TODO
-
             # Add microcontroller communication here
 
         load_button = tk.Button(
