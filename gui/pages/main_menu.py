@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
-from gui.themes.colors import BACKGROUND_COLOR, BUTTON_COLOR, ACTIVE_BUTTON_COLOR
+from gui.themes.main_themes import *
 
 class MainMenu(tk.Frame):
     def __init__(self, parent, app):
@@ -11,7 +11,7 @@ class MainMenu(tk.Frame):
         content.place(relx=0.5, y=20, anchor="n")
         content.configure(bg=BACKGROUND_COLOR)
 
-        button_font = ("Arial", 14)
+        button_font = BUTTON_FONT
         button_width = 20
 
         self.configure(bg=BACKGROUND_COLOR)
@@ -34,7 +34,7 @@ class MainMenu(tk.Frame):
         menuTitle = tk.Label(
                 content, 
                 text="Main Menu", 
-                font=button_font,
+                font=MAIN_MENU_FONT,
                 background=BACKGROUND_COLOR,
                 fg="white")
         menuTitle.grid(row=0, column=0, columnspan=2, pady=(0, 20))
