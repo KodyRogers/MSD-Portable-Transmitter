@@ -20,7 +20,6 @@ class ViewRecordings(tk.Frame):
         main_frame = tk.Frame(self)
         main_frame.pack(padx=20, pady=10, fill='both', expand=True)
 
-        # ---- LEFT: Available messages ----
         get_frame = tk.Frame(main_frame)
         get_frame.pack(side=tk.LEFT, padx=10, fill='both', expand=True)
 

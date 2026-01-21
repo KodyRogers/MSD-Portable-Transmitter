@@ -49,6 +49,7 @@ class MainMenu(tk.Frame):
             ("Control", "Control")
         ]
 
+        # Create buttons in a grid
         for i, (text, frame_name) in enumerate(buttons):
                 if frame_name:
                         action = lambda fn=frame_name: app.show_frame(fn)
