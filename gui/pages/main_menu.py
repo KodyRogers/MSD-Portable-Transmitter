@@ -31,7 +31,6 @@ class MainMenu(tk.Frame):
             background=[("active", ACTIVE_BUTTON_COLOR)]
         )
 
-
         menuTitle = tk.Label(
                 content, 
                 text="Main Menu", 
