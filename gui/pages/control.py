@@ -39,6 +39,7 @@ class Control(tk.Frame):
             status_var.set("Power On")
             print("Hardware Turned on")
             messagebox.showinfo("Control", "Hardware Power On")
+            # TODO: Add real hardware control logic here
 
         # --- Buttons ---
         on_button = tk.Button(self, text="Power On", font=my_font, width=15, command=power_hardware)
