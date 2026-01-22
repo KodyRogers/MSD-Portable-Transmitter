@@ -1,26 +1,41 @@
 import tkinter as tk
+from tkinter import ttk
 import tkinter.font as font
 from tkinter import messagebox
+
+from gui.themes.main_themes import *
 
 class Control(tk.Frame):
     def __init__(self, parent, app):
         super().__init__(parent)
 
-        my_font = font.Font(family="Times New Roman", size=16)
+        self.configure(bg=BACKGROUND_COLOR)
+        style = ttk.Style(self)
+        style.theme_use("default")
 
-        tk.Label(self, text="Control Page", font=("Arial", 14)).pack(pady=10)
-
-        btn = tk.Button(
-            self,
-            text="Back to Main Menu",
-            command=lambda: app.show_frame("MainMenu")
+        style.configure(
+            "Menu.TButton",
+            font=BUTTON_FONT,
+            padding=10,
+            background=BUTTON_COLOR
         )
-        btn.pack(side="bottom", anchor="e", padx=10, pady=10)
-        
 
-        status_var = tk.StringVar(value="Idle")
-        status_label = tk.Label(self, textvariable=status_var, font=my_font)
-        status_label.pack(pady=10)
+        style.configure(
+            "Menu.B2Menu.TButton",
+            font=BACK_TO_MENU_FONT,
+            padding=10,
+            background=BUTTON_COLOR
+        )
+
+        style.map(
+            "Menu.TButton",
+            background=[("active", ACTIVE_BUTTON_COLOR)]
+        )
+
+        style.map(
+            "Menu.B2Menu.TButton",
+            background=[("active", ACTIVE_BUTTON_COLOR)]
+        )
 
         # --- Button Callbacks ---
         def start_hardware():
@@ -41,12 +56,46 @@ class Control(tk.Frame):
             messagebox.showinfo("Control", "Hardware Power On")
             # TODO: Add real hardware control logic here
 
+
+        
+        control_title = tk.Label(self, text="Control Page", font=TITLE_FONT)
+        control_title.configure(bg=BACKGROUND_COLOR, fg="white")
+        control_title.pack(pady=10)
+
+        # --- Back to Menu Button ---
+        btn = ttk.Button(
+            self,
+            text="Back to Main Menu",
+            style="Menu.B2Menu.TButton",
+            command=lambda: app.show_frame("MainMenu")
+        )
+        btn.pack(side="bottom", anchor="e", padx=10, pady=10)
+    
+        # --- Status Label ---
+        status_var = tk.StringVar(value="Idle")
+        status_label = tk.Label(self, textvariable=status_var, font=SUBTITLE_FONT)
+        
+        status_label.configure(bg=BACKGROUND_COLOR, fg="white")
+        status_label.pack(pady=10)  
+
         # --- Buttons ---
-        on_button = tk.Button(self, text="Power On", font=my_font, width=15, command=power_hardware)
+        on_button = ttk.Button(
+            self, 
+            text="Power On", 
+            style="Menu.TButton",
+            command=power_hardware)
         on_button.pack(pady=10)
 
-        start_button = tk.Button(self, text="Start", font=my_font, width=15, command=start_hardware)
+        start_button = ttk.Button(
+            self, 
+            text="Start", 
+            style="Menu.TButton",
+            command=start_hardware)
         start_button.pack(pady=10)
 
-        stop_button = tk.Button(self, text="Stop", font=my_font, width=15, command=stop_hardware)
+        stop_button = ttk.Button(
+            self, 
+            text="Stop", 
+            style="Menu.TButton", 
+            command=stop_hardware)
         stop_button.pack(pady=10)

@@ -11,9 +11,7 @@ class MainMenu(tk.Frame):
         content.place(relx=0.5, y=20, anchor="n")
         content.configure(bg=BACKGROUND_COLOR)
 
-        button_font = BUTTON_FONT
         button_width = 20
-
         self.configure(bg=BACKGROUND_COLOR)
 
         style = ttk.Style(self)
@@ -21,7 +19,7 @@ class MainMenu(tk.Frame):
 
         style.configure(
             "Menu.TButton",
-            font=button_font,
+            font=BUTTON_FONT,
             padding=10,
             background=BUTTON_COLOR
         )
@@ -34,7 +32,7 @@ class MainMenu(tk.Frame):
         menuTitle = tk.Label(
                 content, 
                 text="Main Menu", 
-                font=MAIN_MENU_FONT,
+                font=TITLE_FONT,
                 background=BACKGROUND_COLOR,
                 fg="white")
         menuTitle.grid(row=0, column=0, columnspan=2, pady=(0, 20))
