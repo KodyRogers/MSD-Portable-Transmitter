@@ -14,8 +14,6 @@ class Program(tk.Frame):
         container_style = ttk.Style(self)
         container_style.configure("TFrame", background=BACKGROUND_COLOR)
 
-
-
         container = ttk.Frame(self, style="TFrame")
         container.pack(fill="both", expand=True)
 
