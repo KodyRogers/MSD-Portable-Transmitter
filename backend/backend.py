@@ -25,6 +25,10 @@ def get_gps_data():
 def play_audio(file_path):
     pass
 
+# TODO: 
+def create_audio(files, iterations, start_delay, delay_between):
+    pass
+
 # TODO
 def save_data():
     
@@ -39,10 +43,14 @@ def save_data():
     tts.save(AUDIO_DIR + f"{timestamp}.mp3")
 
     print(timestamp)
-    
+
+def start_logs():
+    #TODO
+    pass
+
 def main():
     save_data()
-    
+
 if __name__ == "__main__":
     main()
     
