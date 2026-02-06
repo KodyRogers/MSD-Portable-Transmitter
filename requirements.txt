@@ -1,2 +1,4 @@
 mutagen
 tkinter
+board
+gpsd
