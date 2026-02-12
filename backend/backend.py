@@ -1,8 +1,10 @@
 import serial
 import time
+import pydub
 
 from datetime import datetime
 from gtts import gTTS
+from pydub import AudioSegment
 
 SERIAL_PORT = "/dev/serial0"
 BAUDRATE = 9600
@@ -27,10 +29,23 @@ def play_audio(file_path):
 
 # TODO: 
 def create_audio(files, iterations, start_delay, delay_between):
+
+    final_audio = AudioSegment.empty()
+
+    for i in range(iterations):
+        
+        for file in files:
+            audio = AudioSegment.from_file(file["filepath"], format="mp3")
+            final_audio += audio
+
+    final_audio.export(AUDIO_DIR + f"combined_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.mp3", format="mp3")
+    gps_data = get_gps_data()
+    
+#TODO
+def save_data():
     pass
 
-# TODO
-def save_data():
+def generate_data():
     
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     gps_data = get_gps_data()
@@ -49,7 +64,7 @@ def start_logs():
     pass
 
 def main():
-    save_data()
+    generate_data()
 
 if __name__ == "__main__":
     main()

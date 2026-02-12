@@ -5,9 +5,9 @@ from datetime import datetime
 def load_files():
     files = []
 
-    for file in os.listdir("files"):
+    for file in os.listdir("files/audio"):
         if file.endswith(".mp3") or file.endswith(".wav"):
-            filepath = os.path.join("files", file)
+            filepath = os.path.join("files/audio", file)
 
             audio = File(filepath)
             stats = os.stat(filepath)
