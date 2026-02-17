@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
-from gui.themes.main_themes import *
+from themes.main_themes import *
 
 class MainMenu(tk.Frame):
     def __init__(self, parent, app):
