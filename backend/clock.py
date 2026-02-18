@@ -3,7 +3,7 @@ import board
 import busio
 from adafruit_ht16k33.segments import Seg7x4
 
-
+# Currently doesn't work
 class Clock:
     def __init__(self, controller):
         self.controller = controller
@@ -40,5 +40,3 @@ class Clock:
             # Blink colon
             self.display.colon = self.colon_on
             self.colon_on = not self.colon_on
-
-            time.sleep(1)
