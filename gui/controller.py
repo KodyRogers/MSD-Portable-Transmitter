@@ -1,11 +1,14 @@
 import tkinter as tk
-
+from  backend.clock import Clock
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Simple Multi-Page GUI")
         self.geometry("800x600")
 
+        self.running = False
+        self.clock = Clock(self)
+        
         self.container = tk.Frame(self)
         self.container.pack(fill="both", expand=True)
 
@@ -22,6 +25,8 @@ class App(tk.Tk):
     def show_frame(self, name):
         self.frames[name].tkraise()
 
+    def toggle(self):
+        self.running = not self.running
 
 
 

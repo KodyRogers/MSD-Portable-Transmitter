@@ -1,4 +1,5 @@
 __pycache__/
 /files
 /backend/old_code
+/backend/mock_display.py
 /old

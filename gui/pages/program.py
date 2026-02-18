@@ -3,7 +3,7 @@ from tkinter import font
 from tkinter import messagebox
 from tkinter import ttk
 
-from gui.themes.main_themes import *
+from gui.pages.themes.main_themes import *
 
 class Program(tk.Frame):
 

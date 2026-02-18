@@ -3,7 +3,7 @@ from tkinter import ttk
 import tkinter.font as font
 from tkinter import messagebox
 
-from themes.main_themes import *
+from gui.pages.themes.main_themes import *
 
 class Control(tk.Frame):
     def __init__(self, parent, app):
