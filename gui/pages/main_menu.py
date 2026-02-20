@@ -105,15 +105,15 @@ class MainMenu(tk.Frame):
             text="Stop" if self.app.running else "Start"
     )
 
-    def start_clock_updates(self):
-        # This function calls itself every second
-        self.app.clock.update()  # <-- update HT16K33 display
-        self.start_stop_btn.after(1000, self.start_clock_updates)
+    #def start_clock_updates(self):
+    #    # This function calls itself every second
+    #    self.app.clock.update()  # <-- update HT16K33 display
+    #    self.start_stop_btn.after(1000, self.start_clock_updates)
 
     def tkraise(self):
         super().tkraise()
         self.update_button()
         
-        if not hasattr(self, "_clock_updating"):
-            self._clock_updating = True
-            self.start_clock_updates()
+        #if not hasattr(self, "_clock_updating"):
+        #    self._clock_updating = True
+        #    self.start_clock_updates()
