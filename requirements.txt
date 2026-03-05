@@ -1,9 +1,0 @@
-mutagen
-tkinter
-board
-busio
-adafruit_ht16k33
-gpsd
-gtts
-serial
-pydub

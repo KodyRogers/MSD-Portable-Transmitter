@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Program</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+    <h1>Program</h1>
+
+    <form action="/save-program" method="post" class="form-container">
+
+        <label>Delay Between Messages (ms):</label>
+        <input type="number" name="delay" required>
+
+        <label>Start Delay (ms):</label>
+        <input type="number" name="start_delay" required>
+
+        <label>Iterations:</label>
+        <input type="number" name="iterations" required>
+
+        <div class="form-buttons">
+            <a href="/" class="back-btn bottom-left">Back to Main Menu</a>
+            <button type="submit" class="back-btn bottom-right">Save</button>
+        </div>
+        
+        {% if success %}
+        <p class="success-message">Settings saved successfully!</p>
+        {% endif %}
+
+    </form>
+</body>
+
+</html>
