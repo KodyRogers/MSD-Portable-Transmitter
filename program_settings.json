@@ -1,5 +1,12 @@
 {
-    "delay": 1,
-    "start_delay": 2,
-    "iterations": 3
+    "order": [
+        "2026-02-20_13-59-58.mp3",
+        "2026-02-20_14-00-25.mp3",
+        "2026-02-20_14-00-24.mp3"
+    ],
+    "program": {
+        "delay": 1,
+        "start_delay": 1,
+        "iterations": 1
+    }
 }

@@ -5,6 +5,8 @@ import os
 import json
 
 from fastapi.templating import Jinja2Templates
+from backend.load_files import load_files
+from backend.settings import load_settings, save_settings
 from httpcore import request
 
 app = FastAPI()
@@ -35,8 +37,13 @@ async def control():
     return FileResponse(os.path.join(GUI_DIR, "control.html"))
 
 @app.get("/select")
-async def select():
-    return FileResponse(os.path.join(GUI_DIR, "select.html"))
+async def select(request: Request):
+    
+    files = load_files()
+    return templates.TemplateResponse("select.html", {
+        "request": request,
+        "files": files
+    })
 
 @app.get("/recordings")
 async def recordings():
@@ -54,17 +61,31 @@ async def save_program(
     start_delay: int = Form(...),
     iterations: int = Form(...)
 ):
-    data = {
+    
+    data = load_settings()
+    
+    data["program"] = {
         "delay": delay,
         "start_delay": start_delay,
         "iterations": iterations
     }
 
-    # Save to JSON file
-    with open("program_settings.json", "w") as f:
-        json.dump(data, f, indent=4)
+    save_settings(data)
 
     return templates.TemplateResponse("program.html", {
         "request": request,
         "success": True
     })
+
+
+@app.post("/create_sequence")
+async def create_sequence(request: Request):
+
+    payload = await request.json()
+    order = payload["order"]
+
+    data = load_settings()
+    data["sequence"] = order
+    save_settings(data)
+
+    return {"status":"ok", "success": True}
