@@ -1,0 +1,185 @@
+/* Center everything on the screen */
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #121212; /* Deep dark background */
+    color: #ffffff;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Constrain the app to look like a floating panel */
+.app-container {
+    width: 400px; /* <-- strictly lock the width here */
+    max-width: 95vw; /* <-- prevents it from clipping off mobile phone screens */
+    padding: 20px;
+    animation: slideUpFade 0.8s ease-out forwards;
+}
+
+/* --- HEADER & LOGO STYLING --- */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.app-logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+    animation: pulseGlow 3s infinite;
+}
+
+.header-title {
+    text-align: center;
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #00ffcc;
+    text-shadow: 0px 0px 10px rgba(0, 255, 204, 0.3); /* Subtle neon glow */
+}
+
+/* --- NAVIGATION TABS --- */
+.tab-menu {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 0px;
+    position: relative;
+    z-index: 2; /* Brings the tabs visually in front of the card */
+}
+
+    .tab-menu button {
+        flex: 1;
+        padding: 15px;
+        background-color: rgba(0, 0, 0, 0.3); /* Darker background for inactive tabs */
+        color: #888;
+        border: 1px solid transparent;
+        border-bottom: none;
+        border-radius: 8px 8px 0 0;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: all 0.2s;
+    }
+
+        /* THE MAGIC FOLDER TRICK */
+        .tab-menu button.active {
+            background-color: rgba(255, 255, 255, 0.05); /* Must exactly match the .card background! */
+            color: #00ffcc;
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Matches the card's outer border */
+            border-bottom: 1px solid transparent; /* Erases the line separating tab and card */
+            backdrop-filter: blur(12px);
+            margin-bottom: -1px; /* Pulls the tab down 1 pixel to hide the card's top border */
+            padding-bottom: 16px; /* Adds 1px of padding so the text doesn't look off-center */
+        }
+
+/* --- CONTENT CARDS (THE GLASS EFFECT) --- */
+.card {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    border-radius: 0 8px 8px 8px; /* Square top-left corner to complete the folder look */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1; /* Puts the card physically behind the tabs */
+}
+
+    .card h2 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        color: #00ffcc;
+        /* Ensure no border-bottom is here so it stays clean */
+    }
+
+/* --- FORMS AND INPUTS --- */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+    .form-group label {
+        margin-bottom: 5px;
+        color: #ccc;
+        font-size: 0.9rem;
+    }
+
+/* Ensure inputs stretch to fit */
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.4); /* Dark inset look */
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #00ffcc;
+}
+
+.status-grid p {
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin: 8px 0;
+}
+
+/* --- BUTTONS --- */
+.btn-save {
+    width: 100%;
+    padding: 15px;
+    background-color: transparent;
+    border: 2px solid #00ffcc;
+    color: #00ffcc;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.2s;
+}
+
+    .btn-save:hover {
+        background-color: #00ffcc;
+        color: #121212;
+        box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+    }
+
+/* --- ANIMATIONS --- */
+@keyframes slideUpFade {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseGlow {
+    0% {
+        filter: drop-shadow(0 0 5px rgba(0, 204, 102, 0.2));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 15px rgba(0, 204, 102, 0.6));
+    }
+
+    100% {
+        filter: drop-shadow(0 0 5px rgba(0, 204, 102, 0.2));
+    }
+}
